@@ -15,6 +15,31 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+--> PH
+
+-- Esc
+keymap("i", "kj", "<esc>", opts)
+keymap("i", "jk", "<esc>", opts)
+keymap("i", "kk", "<esc>", opts)
+keymap("i", "jj", "<esc>", opts)
+
+-- Visual
+keymap("n", "mv", "<C-v>", opts)
+keymap("v", "u", "<esc>", opts)
+
+---- Save, exit, etc
+keymap("n", "<leader>x", ":x   <cr>", opts)
+
+---- command line
+keymap("n", "mm", ":", opts)
+keymap("v", "mm", ":", opts)
+
+---- search
+keymap("n", "mf", "/", opts)
+
+---- Tagbar
+keymap("n", "mt", ":Tabularize /", opts)
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -78,3 +103,29 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- which-key
+
+--local wk = require("which-key")
+--
+---- As an example, we will create the following mappings:
+----  * <leader>ff find files
+----  * <leader>fr show recent files
+----  * <leader>fb Foobar
+---- we'll document:
+----  * <leader>fn new file
+----  * <leader>fe edit file
+---- and hide <leader>1
+--
+--wk.register({
+--  f = {
+--    name = "file", -- optional group name
+--    f = { "<cmd>Telescope find_files<cr>", "Find File" }, -- create a binding with label
+--  --r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false, buffer = 123 }, -- additional options for creating the keymap
+--    n = { "New File" }, -- just a label. don't create any mapping
+--    e = "Edit File", -- same as above
+--    ["1"] = "which_key_ignore",  -- special label to hide it in the popup
+--    b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
+--  },
+--}, { prefix = "<leader>" })
+--

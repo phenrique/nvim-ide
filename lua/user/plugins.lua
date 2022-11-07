@@ -97,6 +97,13 @@ return packer.startup(function(use)
 
   -- JAVA
   use 'mfussenegger/nvim-jdtls'
+  use{ "godlygeek/tabular" }
+  use{ "rhysd/clever-f.vim" }
+  use{ "stevearc/vim-arduino" }
+  use{ "stevearc/dressing.nvim" }
+
+  -- Which Key
+  use {"folke/which-key.nvim", commit = "bd4411a2ed4dd8bb69c125e339d837028a6eea71"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

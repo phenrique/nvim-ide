@@ -33,6 +33,44 @@ local location = {
   padding = 0,
 }
 
+local function get_arduino_fqbn(inputstr)
+
+  local t = {}
+  for str in string.gmatch(inputstr, "([^:]+)") do
+    table.insert(t, str)
+  end
+local s = table.concat(t, ":", 1, 3)
+
+  return s
+
+end
+
+
+
+local function arduino_status()
+
+
+  if vim.g.arduino_board == nil or vim.g.arduino_board == '' then
+    return ""
+  end
+
+  local arduino_board_fqbn = get_arduino_fqbn(vim.g.arduino_board)
+
+  local ft = vim.api.nvim_buf_get_option(0, "ft")
+  if ft ~= "arduino" then
+    return ""
+  end
+  local port = vim.fn["arduino#GetPort"]()
+  local line = string.format("[%s]", arduino_board_fqbn)
+  if vim.g.arduino_programmer ~= "" then
+    line = line .. string.format(" [%s]", vim.g.arduino_programmer)
+  end
+  if port ~= 0 then
+    line = line .. string.format(" (%s:%s)", port, vim.g.arduino_serial_baud)
+  end
+  return line
+end
+
 local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
@@ -51,7 +89,7 @@ lualine.setup {
     lualine_a = { "mode" },
     lualine_b = {"branch"},
     lualine_c = { diagnostics },
-    lualine_x = { diff, spaces, "encoding", filetype },
+    lualine_x = { arduino_status, diff, spaces, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
   },

@@ -31,7 +31,7 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
-local workspace_dir = WORKSPACE_PATH .. project_name
+local workspace_dir = "/home/paulo/projects/java/" .. project_name
 
 -- TODO: Testing
 
