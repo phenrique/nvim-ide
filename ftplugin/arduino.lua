@@ -55,11 +55,8 @@ lspconfig["arduino_language_server"].setup(opts)
 --    lualine_z = { arduino_status },
 --  },
 --}
---
 --require('lualine').setup(lualine)
 
 --require("lspconfig")["arduino_language_server"].setup(opts)
-
 --  local config = lualine.get_config()
-
 --lvim.builtin.lualine.sections.lualine_c = { arduino_status }
